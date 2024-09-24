@@ -1,0 +1,30 @@
+# Add users in gamers group to a visudo exception
+sudo visudo
+# Add this line
+%gamers         ALL=(ALL)       NOPASSWD: ALL
+
+# Create a .groups file in $HOME with the following on at least one line
+gamers=yes
+
+# Append the below text to /etc/bashrc
+if grep -Fxq "gamers=yes" $HOME/.groups
+then
+    echo Kek! $USER IS a real gamer! > $HOME/.gamer.log
+    cp -f /opt/games/.scripts/.gameon.sh ~/
+    # gameon.sh
+    #!/bin/bash
+    # Allowing you ownership of the games folder and gamer log file
+    chown -R "$USER:$USER" /opt/games/
+    chown -R "$USER:$USER" /var/log/gamers.log
+    rm ~/Games
+    ln -s -f /opt/games ~/Games
+    # Including you as a gamer
+    usermod -a -G gamers $USER > /var/log/gamers.log
+    echo 'Added '$USER' to gamers'
+    echo 'Added '$USER' to gamers' > /var/log/gamers.log
+    usermod -a -G input $USER > /var/log/gamers.log
+    echo 'Added '$USER' to input' > /var/log/gamers.log
+    echo 'Added '$USER' to input'
+else
+    echo $USER is not even real gamer > $HOME/.gamer.log
+fi
