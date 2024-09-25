@@ -1,10 +1,13 @@
 # Add users in gamers group to a visudo exception
 sudo visudo
-# Add this line
-%gamers         ALL=(ALL)       NOPASSWD: ALL
+# Allow gamers to use required commands without password
+%gamers         ALL=(ALL)       NOPASSWD: /bin/chown
+%gamers         ALL=(ALL)       NOPASSWD: /bin/echo
+%gamers         ALL=(ALL)       NOPASSWD: /sbin/usermod
 
-# Create a .groups file in $HOME with the following on at least one line
-gamers=yes
+# Create a .groups file in $HOME with the following on at least one line, do this for each gamer
+touch ~/.groups
+echo ~/.groups >> gamers=yes
 
 # Append the below text to /etc/bashrc
 if grep -Fxq "gamers=yes" $HOME/.groups
