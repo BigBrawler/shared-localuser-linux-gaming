@@ -26,11 +26,11 @@ then
     chown -R "$USER:$USER" /var/log/gamers.log
     rm ~/Games
     ln -s -f /opt/games ~/Games
-    # Including you as a gamer
+    # Ensuring you're a gamer
     usermod -a -G gamers $USER > /var/log/gamers.log
     echo 'Added '$USER' to gamers'
     echo 'Added '$USER' to gamers' > /var/log/gamers.log
-    # Including you as gamepad user
+    # Ensuring you're allowed a gamepad
     usermod -a -G input $USER > /var/log/gamers.log
     echo 'Added '$USER' to input'
     echo 'Added '$USER' to input' > /var/log/gamers.log
