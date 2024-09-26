@@ -12,7 +12,7 @@ sudo visudo
 
 # Create a .groups file in $HOME with the following on at least one line, do this for each gamer
 touch ~/.groups
-echo ~/.groups >> gamers=yes
+echo gamers=yes >> ~/.groups
 
 # Append the below text to /etc/bashrc
 if grep -Fxq "gamers=yes" $HOME/.groups
